@@ -19,7 +19,8 @@ public class MarkdownParse {
             //fixes when there are no links in the .md file, as indexOf() returns -1
             if(nextOpenBracket == -1 || nextCloseBracket == -1 || openParen == -1 || closeParen == -1) break;
             //doesn't consider image links or links that have text in between brackets and paren
-            if ((nextOpenBracket == 0 || markdown.charAt(nextOpenBracket - 1) !='!') && openParen == nextCloseBracket + 1) {
+            //allows closed bracket ] in between ]___()
+            if ((nextOpenBracket == 0 || markdown.charAt(nextOpenBracket - 1) !='!') && markdown.charAt(openParen - 1) == ']') {
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
             }
 
