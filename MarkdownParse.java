@@ -18,7 +18,7 @@ public class MarkdownParse {
             
             //fixes when there are no links in the .md file, as indexOf() returns -1
             if(nextOpenBracket == -1 || nextCloseBracket == -1 || openParen == -1 || closeParen == -1) break;
-	    int counter = 0;
+	        int counter = 0;
             for (int i = openParen; i < closeParen; i++) {
                 if (markdown.charAt(i) == '\n') {
                     counter += 1;
