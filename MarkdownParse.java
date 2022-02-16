@@ -18,16 +18,16 @@ public class MarkdownParse {
             
             //fixes when there are no links in the .md file, as indexOf() returns -1
             if(nextOpenBracket == -1 || nextCloseBracket == -1 || openParen == -1 || closeParen == -1) break;
-	        int counter = 0;
+            int counter = 0;
             for (int i = openParen; i < closeParen; i++) {
                 if (markdown.charAt(i) == '\n') {
                     counter += 1;
                 }
             }
             if (counter > 1){
-		    currentIndex = closeParen + 1; 
-		    continue;
-	    }
+            currentIndex = closeParen + 1; 
+            continue;
+        }
             //doesn't consider image links or links that have text in between brackets and paren
             //allows closed bracket ] in between ]___()
             if ((nextOpenBracket == 0 || markdown.charAt(nextOpenBracket - 1) !='!') && markdown.charAt(openParen - 1) == ']') {
@@ -39,8 +39,8 @@ public class MarkdownParse {
         return toReturn;
     }
     public static void main(String[] args) throws IOException {
-		Path fileName = Path.of(args[0]);
-	    String contents = Files.readString(fileName);
+        Path fileName = Path.of(args[0]);
+        String contents = Files.readString(fileName);
         ArrayList<String> links = getLinks(contents);
         System.out.println(links);
     }
