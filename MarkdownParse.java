@@ -24,16 +24,15 @@ public class MarkdownParse {
                     counter += 1;
                 }
             }
-            if (counter > 1){
-            currentIndex = closeParen + 1; 
-            continue;
-        }
+            if (counter > 1) {
+                currentIndex = closeParen + 1; 
+                continue;
+            }
             //doesn't consider image links or links that have text in between brackets and paren
             //allows closed bracket ] in between ]___()
             if ((nextOpenBracket == 0 || markdown.charAt(nextOpenBracket - 1) !='!') && markdown.charAt(openParen - 1) == ']') {
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
             }
-
             currentIndex = closeParen + 1;
         }
         return toReturn;
